@@ -1,0 +1,78 @@
+<div layout="column" layout-padding>
+<md-input-container class="newsetting1">
+  <label>    
+    Naam:
+  </label>
+  <input type="text" ng-model="ownersUpdate.owner.name" placeholder=""/>
+ </md-input-container>
+ <md-input-container class="newsetting1">
+  <label>  
+    Van: 
+  </label>
+  <input type="text" ng-model="ownersUpdate.owner.surname"  placeholder=""/>
+  </md-input-container>
+  <md-input-container class="newsetting1">
+  <label>
+    Selfoon nr:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.phone" placeholder="" />
+    </md-input-container>
+    <md-input-container class="newsetting1">
+    <label>   
+       E-pos adres:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.email" placeholder="" />
+    </md-input-container>
+<md-input-container class="newsetting1">
+    <label>
+    ID nommer:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.id"  placeholder=""/>
+    </md-input-container>
+ <md-input-container class="newsetting1">
+    <label>
+    Verteenwoordiger:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.representave" placeholder="" />
+    </md-input-container>
+<md-input-container class="newsetting1">
+    <label>
+    Genomineerde siekeboeg:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.nominatedsickarea" placeholder="" />
+    </md-input-container>
+   <md-input-container class="newsetting1">
+    <label>
+    Naasbestaande Naam en Van:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.family" placeholder="" />
+    </md-input-container>
+  <md-input-container class="newsetting1">
+    <label>
+    Naasbestaande Selfoon nr:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.familycell" placeholder="" />
+    </md-input-container>
+  <md-input-container class="newsetting1">
+    <label>
+    Naasbestaande E-pos adres:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.familyemail" placeholder="" />
+    </md-input-container>
+   <md-input-container class="newsetting1">
+    <label>
+    Gekoppeld,Prokureur,Reelings:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.coupled"  placeholder=""/>
+    </md-input-container>
+  <md-input-container class="newsetting1">
+    <label>
+    Kommentaar:
+  </label> 
+   <input type="text" ng-model="ownersUpdate.owner.comments"  placeholder=""/>
+    </md-input-container>
+  <div layout="column" layout-gt-sm="row" layout-padding>
+    <md-button class="md-raised" ng-click="ownersUpdate.save()">Stoor Veranderinge</md-button>
+    <md-button class="md-raised" ui-sref="ownersList">Terug</md-button>
+   </div>
+</div>

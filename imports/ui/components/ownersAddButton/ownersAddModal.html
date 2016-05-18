@@ -1,0 +1,16 @@
+<md-dialog aria-label="New owner" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Voeg nuwe koper by</h2>
+      <span flex></span>
+      <md-button ng-click="ownersAddModal.close()">
+        Gaan terug
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <owners-add done="ownersAddModal.close()"></owners-add>
+    </div>
+  </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,15 @@
+  <md-card ng-repeat="user in userList.users">
+      <md-card-title style="padding: 4px;">
+        <md-card-title-text>
+            <span class="md-headline" ui-sref="userUpdate({ userId: user._id })">  
+                <p style="margin:0px; font-size:16px;">{{user.profile.name}} {{user.profile.surname}} - {{user.profile.company}}</p>
+            </span>
+         </md-card-title-text>
+      </md-card-title>
+  </md-card>
+
+
+<md-button class="md-raised" ui-sref="sites">Terug</md-button>
+
+<!--<user-update user="user"></user-update>-->
+

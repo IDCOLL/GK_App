@@ -1,0 +1,19 @@
+<div layout="column" layout-gt-sm="row">
+  <div flex="50">
+   <md-button  ui-sref="reportsMain">Terug</md-button>  
+    <md-card ng-repeat="site in snagsReport.sites">
+       <md-card-title>
+         <md-card-title-text>         
+              <span class="md-headline">
+                Erf: {{site.nr}}
+              </span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content> 
+            <snagssite-list site = "site"></snagssite-list>
+        </md-card-content>    
+      </md-card>
+   </div>
+</div>
+
+<!--<snagssite-list site = "site" contractorid = "snagsReport.users._id"></snagssite-list>-->

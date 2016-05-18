@@ -1,0 +1,173 @@
+  <div layout="column" layout-gt-sm="column" layout-padding>
+    <div ng-show = "!siteDetails.showsnags"> 
+      <div>
+      <md-input-container class="newsetting">
+          <label>Erf nommer:</label>
+           <input type="text" ng-model="siteDetails.site.nr" ng-keydown="setEmpty($event, 'value1')" placeholder=""/>
+       </md-input-container>
+      <building-phases on-Change = "siteDetails.phasechange(phases)" property="phases" pp="{{siteDetails.site.phase}}"></building-phases>
+    <md-input-container  ng-show="siteDetails.isConstruct()" class="newsetting" style="width:200px">
+    <label>Konstruksie vordering(%):</label>
+    <input type="text" ng-model="siteDetails.sitecopy.conprogress" placeholder=""/>
+    </md-input-container>
+   <div  ng-show="siteDetails.isOption()" >
+    <label  style="font-size:14px">Opsie verval datum:</label>
+    <md-datepicker ng-model="siteDetails.site.optiondate" md-placeholder="Opsie verval:"></md-datepicker>
+  </div>
+        <md-card flex layout="row">
+         <div flex> 
+          <md-card-title style="padding: 0px;">
+            <md-card-title-text>
+              <div class="md-subhead"  style="min-height:15px; min-width:50px; font-size:10px; padding: 2px; text-align:center">Verkope</div>
+            </md-card-title-text>
+          </md-card-title>
+          <span>{{siteDetails.site.salesarray[siteDetails.site.salesarray.length - 1].status}}</span>
+          <sales-phase siteid = "siteDetails.site._id"></sales-phase>
+       </div>
+        </md-card>
+         <md-card flex layout="row">
+          <div flex>
+          <md-card-title style="padding: 0px;">
+            <md-card-title-text>
+              <span class="md-subhead"  style="min-height:15px; min-width:50px; font-size:10px; padding: 2px; text-align:center">Konstruksie</span>
+            </md-card-title-text>
+          </md-card-title>  
+          <span>{{siteDetails.site.constructarray[siteDetails.site.constructarray.length - 1].status}}</span>
+          <construct-phase siteid = "siteDetails.site._id"></construct-phase>
+         </div>         
+        </md-card>
+        <md-card flex>
+         <div flex>  
+          <md-card-title style="padding: 0px;">
+            <md-card-title-text>
+              <span class="md-subhead"  style="min-height:15px; min-width:50px; font-size:10px; padding: 2px; text-align:center">Status veranderinge</span>
+            </md-card-title-text>
+          </md-card-title> 
+          <span>{{siteDetails.site.phasearray[siteDetails.site.phasearray.length - 1].status}}</span>
+          <span>{{siteDetails.site.phasearray[siteDetails.site.phasearray.length - 2].status}}</span>
+          <span>{{siteDetails.site.phasearray[siteDetails.site.phasearray.length - 3].status}}</span>
+          <phase-list siteid = "siteDetails.site._id" limitnr = "3" sortingasc = "-1"></phase-list>
+         </div>
+        </md-card>
+      </div>
+      <div layout="row" layout-gt-sm="row">
+        <owners-dropdown on-Change = "siteDetails.ownerchange(buyers)" property="buyers" pp="{{siteDetails.site.buyer}}"></owners-dropdown>
+        <owners-add-button class="buttonarea" ng-show="siteDetails.isAdminSales(siteDetails.user.profile.role)"></owners-add-button>
+        </div>
+      <!--<md-input-container class="newsetting">
+          <label>GPS coordinate:</label>
+           <input type="text" ng-model="siteDetails.site.gps" />
+       </md-input-container>-->
+<!--<div layout="column" layout-gt-sm="row" layout-padding>
+   <md-checkbox class ="checkboxsetting" type="checkbox" ng-model="siteDetails.site.lifetime" aria-label="Lewensreg?">      
+      Lewensreg op erf
+    </md-checkbox>
+   <md-checkbox class ="checkboxsetting" type="checkbox" ng-model="siteDetails.site.contractsigned" aria-label="Kontrak Geteken?">     
+     Kontrak geteken?
+   </md-checkbox>
+</div>-->
+<div>    
+    <md-input-container class="newsetting">
+    <label>Plan adres:</label>
+    <input type="text" ng-model="siteDetails.site.layoutnr" placeholder=""/>
+    </md-input-container>
+    <area-dropdown on-Change = "siteDetails.areachange(area)" property="area" pp="{{siteDetails.site.area}}"></area-dropdown>
+    <md-input-container class="newsetting">   
+    <label>Tipe huis:</label>
+    <input type="text" ng-model="siteDetails.site.hometype" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">
+    <label>Erf grootte:</label>
+    <input type="text" ng-model="siteDetails.site.sitesize"  placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting"> 
+    <label>Huis grootte:</label>
+    <input type="text" ng-model="siteDetails.site.homesize" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Patio grootte:</label>
+    <input type="text" ng-model="siteDetails.site.patiosize" placeholder=""/>
+    </md-input-container>
+</div>
+<div>
+    <md-input-container class="newsetting">   
+    <label>Slaapkamers:</label>
+    <input type="text" ng-model="siteDetails.site.bedrooms" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Badkamers:</label>
+    <input type="text" ng-model="siteDetails.site.bathrooms" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Studeerkamers:</label>
+    <input type="text" ng-model="siteDetails.site.study" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Garages:</label>
+    <input type="text" ng-model="siteDetails.site.garages" placeholder=""/>
+    </md-input-container>
+</div>
+<div>    
+    <md-input-container class="newsetting" style="width:200px"  ng-show="siteDetails.isAdminSales(siteDetails.user.profile.role)">  
+    <label>Bemark vol titel(R):</label>
+    <input type="text" ng-model="siteDetails.site.marketingfullprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px" ng-show="siteDetails.isAdminSales(siteDetails.user.profile.role)"> 
+    <label>Bemark lewensreg(R):</label>
+    <input type="text" ng-model="siteDetails.site.marketinglrprice" placeholder=""/>
+    </md-input-container>
+</div>
+<div>    
+    <md-input-container class="newsetting" style="width:200px"  ng-show="siteDetails.isAdmin(siteDetails.user.profile.role)"> 
+    <label>Kontrakprys erf vol titel:</label>
+    <input type="text" ng-model="siteDetails.site.siteprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px"  ng-show="siteDetails.isAdmin(siteDetails.user.profile.role)"> 
+    <label>Kontrakprys bou vol titel:</label>
+    <input type="text" ng-model="siteDetails.site.houseprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px"  ng-show="siteDetails.isAdmin(siteDetails.user.profile.role)"> 
+    <label>Kontrakbedrag lewensreg:</label>
+    <input type="text" ng-model="siteDetails.site.contractpricelr" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting"  style="width:200px" ng-show="siteDetails.isAdmin(siteDetails.user.profile.role)"> 
+    <label>Ekstra`s op kontrak datum:</label>
+    <input type="text" ng-model="siteDetails.site.extrasprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px" ng-show="siteDetails.isAdmin(siteDetails.user.profile.role)"> 
+    <label>Ekstra`s na kontrak datum:</label>
+    <input type="text" ng-model="siteDetails.site.addextrasprice" placeholder=""/>
+    </md-input-container>
+</div>
+<div> 
+    <user-dropdown on-Change = "siteDetails.contractorchange(users)" property="users" pp="{{siteDetails.site.contractor}}"></user-dropdown>
+  <div>
+    <label style="font-size:14px">Beoogde voltooing:</label>
+    <md-datepicker style = "min-width:230px" ng-model="siteDetails.site.constructdate" md-placeholder="Beoogde voltooing"></md-datepicker>
+    <md-input-container class="newsetting" style="width:300px">  
+    <label>Kommentaar:</label>
+    <input type="text" ng-model="siteDetails.site.compcom" placeholder=""/>
+    </md-input-container>
+  </div>
+</div> 
+ <!--<div flex>
+   <md-checkbox type="checkbox" ng-model="siteDetails.site.public" aria-label="Public?">
+         Public Site?
+   </md-checkbox> 
+ </div>-->
+ <div layout="column" layout-gt-sm="row" layout-padding>
+    <md-button class="md-raised" ng-click="siteDetails.save($event,siteDetails.site,siteDetails.phase,siteDetails.sitecopy)">Stoor Veranderinge</md-button>
+    <md-button class="md-raised" ui-sref="sites">Terug</md-button>
+ </div>
+</div>
+
+<!--</div>-->
+<!--<site-map location="siteDetails.site.gps"></site-map>-->
+<!--<div layout="column" layout-gt-sm="column" layout-padding>-->
+    <!--<md-checkbox class ="checkboxsetting" type="checkbox" ng-model="siteDetails.showsnags" aria-label="Lewensreg?">      
+      Wys Snags afdeling
+    </md-checkbox>
+    <snags-list site = "siteDetails.site" ng-show = "siteDetails.showsnags"></snags-list>
+    <md-button  class="md-raised" ui-sref="sites" ng-show = "siteDetails.showsnags">Terug</md-button>-->
+</div>
+

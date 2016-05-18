@@ -1,0 +1,11 @@
+ <div layout="column" layout-gt-sm="row">
+     <md-button class="md-raised" ui-sref="phasesReport">Status verslag</md-button>
+     <!--<md-button  ui-sref="snagsReport">Snags verslag</md-button>-->
+     <md-button class="md-raised" ui-sref="salesReport">Kommunikasie verslag</md-button>
+     <md-button class="md-raised" ui-sref="statechangeReport">Status verandering verslag</md-button>
+     <md-button class="md-raised" ui-sref="siteopenReport">Beskikbare eindom</md-button>  
+     <md-button class="md-raised" ui-sref="datEx" ng-show="reportsMain.isAdmin(reportsMain.user.profile.role)">Trek alle data</md-button>    
+</div>
+ <div layout="column" layout-gt-sm="row">
+    <md-button class="md-raised" ui-sref="sites">Terug</md-button>
+ </div>

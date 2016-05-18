@@ -1,0 +1,13 @@
+    <site-snags site="snagsList.sitenew"></site-snags>
+    <md-list-item class="md-2-line" ng-repeat="snag in snagsList.snags">             
+         <md-card flex layout="row">  
+           <div class="md-list-item-text">
+              <h3>{{snag.description}}</h3> 
+                <p>Verantwoordelike Kontrakteer: <user-name userid = "snag.userId"></user-name></p>
+                <p>Snag sperdatum: {{snag.DueDate  | date:'MM/dd/yyyy'}}</p>
+                <snag-completed snag="snag"></snag-completed>
+                <remove-snag snag = "snag" ng-show="snagsList.isAdmin(snagsList.user.profile.role)"></remove-snag>
+           </div>
+         </md-card>
+    </md-list-item>
+

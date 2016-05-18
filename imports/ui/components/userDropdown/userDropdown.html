@@ -1,0 +1,6 @@
+<md-input-container>  
+  <label>Kontrakteers:</label>
+  <md-select ng-model="userDropdown.pp" ng-change="userDropdown.change()">
+    <md-option ng-repeat="user in userDropdown.users" value = "{{user._id}}">{{user.profile.name}} {{user.profile.surname}} - {{user.profile.company}}</md-option>
+  </md-select>
+</md-input-container> 

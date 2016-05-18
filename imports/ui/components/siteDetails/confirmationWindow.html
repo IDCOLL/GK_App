@@ -1,0 +1,16 @@
+<md-dialog aria-label="Confirm" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Bevestig erf veranderinge</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+  <div layout="column" layout-padding>
+    <div layout="column" layout-gt-sm="row" layout-padding> 
+      <md-button class="md-raised" ng-click = "confirmationWindow.yes()">Bevestig</md-button>
+      <md-button class="md-raised" ng-click = "confirmationWindow.cancel()">Kanselleer</md-button>
+    </div>
+  </div>
+  </md-dialog-content>
+</md-dialog>

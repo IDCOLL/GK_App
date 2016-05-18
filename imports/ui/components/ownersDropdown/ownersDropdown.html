@@ -1,0 +1,7 @@
+<md-input-container style="min-width : 110px">  
+  <label>Koper Naam:</label>
+  <md-select ng-model="ownersDropdown.pp" ng-change="ownersDropdown.change()" placeholder="Kies `n Koper">
+    <md-option value = "">Geen</md-option>
+    <md-option ng-repeat="buyer in ownersDropdown.buyer" value = "{{buyer._id}}">{{buyer.surname}} {{buyer.name}}</md-option>
+  </md-select>
+</md-input-container> 

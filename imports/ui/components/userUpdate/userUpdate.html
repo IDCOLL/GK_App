@@ -1,0 +1,43 @@
+<div layout="column" layout-padding>
+<md-input-container class="newsetting1">
+  <label>    
+    E-pos adres:
+  </label>
+  <input type="text" ng-model="userUpdate.user.emails[0].address" ng-disabled=true />
+ </md-input-container>
+ <md-input-container class="newsetting1">
+  <label>  
+    Naam: 
+  </label>
+  <input type="text" ng-model="userUpdate.user.profile.name" />
+  </md-input-container>
+  <md-input-container class="newsetting1">
+  <label>
+    Van:
+  </label> 
+   <input type="text" ng-model="userUpdate.user.profile.surname" />
+    </md-input-container>
+    <md-input-container class="newsetting1">
+    <label>   
+       Selfoon nr:
+  </label> 
+   <input type="text" ng-model="userUpdate.user.profile.phone" />
+    </md-input-container>
+ <!--  <md-input-container>
+    <label>   
+       Rol:
+  </label> 
+   <input type="text" ng-model="userUpdate.user.profile.role" />
+    </md-input-container>-->
+ <user-roles on-Change = "userUpdate.rolechange(roles)" columntochange="roles" val="{{userUpdate.user.profile.role}}"></user-roles>   
+ <md-input-container class="newsetting1">
+    <label>
+    Maatskappy:
+  </label> 
+   <input type="text" ng-model="userUpdate.user.profile.company" />
+    </md-input-container>
+  <div layout="column" layout-gt-sm="row" layout-padding>
+    <md-button class="md-raised" ng-click="userUpdate.save()">Stoor Veranderinge</md-button>
+    <md-button class="md-raised" ui-sref="userList">Terug</md-button>
+   </div>
+</div>

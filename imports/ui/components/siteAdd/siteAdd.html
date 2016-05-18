@@ -1,0 +1,123 @@
+<div layout="column" layout-gt-sm="column" layout-padding>
+<md-input-container  class="newsetting">
+  <label>
+     Erf nommer:
+  </label>
+    <input type="text" ng-model="siteAdd.site.nr"/>
+</md-input-container>
+<div layout="row" layout-gt-sm="row">
+    <owners-dropdown on-Change = "siteAdd.ownerchange(buyers)" property="buyers" pp="1"></owners-dropdown>
+    <owners-add-button class="buttonarea"></owners-add-button>
+</div>
+<!--<div layout="column" layout-gt-sm="row" layout-padding>
+   <md-checkbox class ="checkboxsetting" type="checkbox" ng-model="siteDetails.site.lifetime" aria-label="Lewensreg?">      
+      Lewensreg op erf
+    </md-checkbox>
+   <md-checkbox class ="checkboxsetting" type="checkbox" ng-model="siteDetails.site.contractsigned" aria-label="Kontrak Geteken?">     
+     Kontrak geteken?
+   </md-checkbox>
+</div>-->
+<!--<md-input-container  class="newsetting">       
+  <label>
+    GPS coordinate:
+  </label>
+ <input type="text" ng-model="siteAdd.site.gps"/>
+</md-input-container>-->
+<div>    
+    <md-input-container class="newsetting">
+    <label>Plan adres:</label>
+    <input type="text" ng-model="siteAdd.site.layoutnr" placeholder=""/>
+    </md-input-container>
+    <area-dropdown on-Change = "siteAdd.areachange(area)" property="area" pp="{{siteDetails.site.area}}"></area-dropdown>
+    <md-input-container class="newsetting">   
+    <label>Tipe huis:</label>
+    <input type="text" ng-model="siteAdd.site.hometype" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">
+    <label>Erf grootte:</label>
+    <input type="text" ng-model="siteAdd.site.sitesize"  placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting"> 
+    <label>Huis grootte:</label>
+    <input type="text" ng-model="siteAdd.site.homesize" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Patio grootte:</label>
+    <input type="text" ng-model="siteAdd.site.patiosize" placeholder=""/>
+    </md-input-container>
+</div>
+<div>
+    <md-input-container class="newsetting">   
+    <label>Slaapkamers:</label>
+    <input type="text" ng-model="siteAdd.site.bedrooms" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Badkamers:</label>
+    <input type="text" ng-model="siteAdd.site.bathrooms" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Studeerkamers:</label>
+    <input type="text" ng-model="siteAdd.site.study" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting">   
+    <label>Garages:</label>
+    <input type="text" ng-model="siteAdd.site.garages" placeholder=""/>
+    </md-input-container>
+</div>
+<div>    
+    <md-input-container class="newsetting" style="width:200px">  
+    <label>Bemark vol titel(R):</label>
+    <input type="text" ng-model="siteAdd.site.marketingfullprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px"> 
+    <label>Bemark lewensreg(R):</label>
+    <input type="text" ng-model="siteAdd.site.marketinglrprice" placeholder=""/>
+    </md-input-container>
+</div>
+<div>    
+    <md-input-container class="newsetting" style="width:200px"> 
+    <label>Kontrakprys erf vol titel:</label>
+    <input type="text" ng-model="siteAdd.site.siteprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px"> 
+    <label>Kontrakprys bou vol titel:</label>
+    <input type="text" ng-model="siteAdd.site.houseprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px"> 
+    <label>Kontrakbedrag lewensreg:</label>
+    <input type="text" ng-model="siteAdd.site.contractpricelr" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting"  style="width:200px"> 
+    <label>Ekstra`s op kontrak datum:</label>
+    <input type="text" ng-model="siteAdd.site.extrasprice" placeholder=""/>
+    </md-input-container>
+    <md-input-container class="newsetting" style="width:200px"> 
+    <label>Ekstra`s na kontrak datum:</label>
+    <input type="text" ng-model="siteAdd.site.addextrasprice" placeholder=""/>
+    </md-input-container>
+</div>
+<div> 
+    <md-input-container class="newsetting" style="width:200px">  
+    <label>Bou kontrakteur:</label>
+    <input type="text" ng-model="siteAdd.site.contractor" placeholder=""/>
+    </md-input-container>
+  <div>
+    <label>Beoogde voltooing:</label>
+    <md-datepicker ng-model="siteAdd.site.constructdate" md-placeholder="Beoogde voltooing"></md-datepicker>
+    <md-input-container class="newsetting" style="width:300px">  
+    <label>Kommentaar:</label>
+    <input type="text" ng-model="siteAdd.site.compcom" placeholder=""/>
+    </md-input-container>
+  </div>
+</div> 
+ <!--<div flex>
+   <md-checkbox type="checkbox" ng-model="siteAdd.site.public" aria-label="Public?">
+         Public Site?
+   </md-checkbox> 
+ </div>-->
+ <div  layout="column" layout-gt-sm="row" layout-padding>
+    <md-button  class="md-raised" ng-click="siteAdd.submit($event,siteAdd.site)">Stoor Nuwe Erf</md-button>
+    <md-button  class="md-raised" ng-click="siteAdd.reset()">Maak vorm skoon</md-button>
+    <md-button   class="md-raised" ui-sref="sites">Terug</md-button>
+</div>
+</div>

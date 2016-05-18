@@ -1,0 +1,30 @@
+<div layout="column" layout-padding>
+<md-input-container>
+  <label>
+     Naam:
+  </label>
+    <input type="text" ng-model="ownersAdd.owner.name"/>
+</md-input-container>
+<md-input-container>
+  <label>
+      Van:
+   </label>
+     <input type="text" ng-model="ownersAdd.owner.surname"/>
+</md-input-container>
+<md-input-container>
+  <label>
+      Kontak Nommer:
+   </label>
+     <input type="text" ng-model="ownersAdd.owner.phone"/>
+</md-input-container>
+<md-input-container>
+  <label>
+      E-pos Adres:
+   </label>
+     <input type="text" ng-model="ownersAdd.owner.email"/>
+</md-input-container>
+
+ <div flex>
+   <md-button class="md-raised" ng-click="ownersAdd.submit()">Stoor Koper</md-button>
+</div>
+</div>

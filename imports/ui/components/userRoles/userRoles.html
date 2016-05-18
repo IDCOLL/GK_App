@@ -1,0 +1,6 @@
+<md-input-container>  
+  <label>Gebruiker Rol:</label>
+  <md-select ng-model="userRoles.val" ng-change="userRoles.change()">
+    <md-option ng-repeat="x in userRoles.list" value = "{{x.role}}">{{x.role}}</md-option>
+  </md-select>
+</md-input-container> 

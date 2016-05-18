@@ -1,0 +1,8 @@
+{
+  "galaxy.meteor.com": { 
+     "env": { 
+       "ROOT_URL": "http://app.groenkloof.mobi", 
+       "MONGO_URL": "mongodb://iancollins:premuim@ds013290.mlab.com:13290/groenkoof_bestuur" 
+     } 
+   }
+}

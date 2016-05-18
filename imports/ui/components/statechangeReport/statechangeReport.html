@@ -1,0 +1,129 @@
+ 
+    <!--<input type="button" ng-click="tableExport.exportToExcel('table1')" value="Export to Excel">-->
+    <div layout="column" layout-gt-sm="row" layout-padding>  
+        <div>
+            <label style="font-size:14px">Begin datum:</label>
+            <md-datepicker style = "min-width:230px" ng-model="statechangeReport.startdate" md-placeholder="Begin"></md-datepicker>
+        </div>
+        <div>
+            <label style="font-size:14px">Eind datum:</label>
+            <md-datepicker style = "min-width:230px" ng-model="statechangeReport.enddate" md-placeholder="Einde"></md-datepicker>
+        </div>
+      <md-button class="md-raised" ng-click="statechangeReport.searchphases(statechangeReport.site)">Genereer</md-button>
+      <input type="text" ng-model="statechangeReport.searchtextplan"> 
+      <md-button class="md-raised" ui-sref="reportsMain">Terug</md-button> 
+    </div>
+    <label style="font-size:14px">Verkope Veranderinge:</label>  
+    <table id = "phasetable" summary="Table with all phases"
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup> 
+       <colgroup align="center">
+        </colgroup>                              
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Erf nr</th>
+                <th>Plan nr</th>
+                <th>Datum</th>
+                <th>Koper</th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "sites in statechangeReport.site | filter : statechangeReport.startdate">
+                <td>{{ sites.nr }}</td>
+                <td>{{ sites.layoutnr }}</td>
+                <td><owner-name buyerid = "sites.buyer"></owner-name></td>
+                <td ng-repeat = "items in sites.phasearray | filter : statechangeReport.searchtextplan">
+                    {{items.status}} - {{items.datestamp | date:'dd/MM/yyyy'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <label style="font-size:14px">Beplanning Veranderinge:</label>      
+        <table id = "phasetable" summary="Table with all phases"
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup> 
+       <colgroup align="center">
+        </colgroup>                              
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Status</th>
+                <th>SiteID</th>
+                <th>Datum</th>
+                <th>Koper</th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "phaseplan in statechangeReport.phaserecplanning">
+                <td>{{ phaseplan.phase }}</td>
+                <td><site-return siteid="phaseplan.siteid"></site-return></td>
+                <td>{{ phaseplan.date | date:'dd/MM/yyyy'}}</td>
+                <td><owner-name buyerid = "phaseplan.buyerid"></owner-name></td>
+            </tr>
+        </tbody>
+    </table>
+    <label style="font-size:14px">Bou Veranderinge:</label>      
+        <table id = "phasetable" summary="Table with all phases"
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup> 
+       <colgroup align="center">
+        </colgroup>                              
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Status</th>
+                <th>SiteID</th>
+                <th>Datum</th>
+                <th>Koper</th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "phasecon in statechangeReport.phasereccon">
+                <td>{{ phasecon.phase }}</td>
+                <td><site-return siteid="phasecon.siteid"></site-return></td>
+                <td>{{ phasecon.date | date:'dd/MM/yyyy'}}</td>
+                <td><owner-name buyerid = "phasecon.buyerid"></owner-name></td>
+            </tr>
+        </tbody>
+    </table>
+    <label style="font-size:14px">Finale fase Veranderinge:</label>      
+        <table id = "phasetable" summary="Table with all phases"
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup> 
+       <colgroup align="center">
+        </colgroup>                              
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Status</th>
+                <th>SiteID</th>
+                <th>Datum</th>
+                <th>Koper</th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "phasefinal in statechangeReport.phasefinal">
+                <td>{{ phasefinal.phase }}</td>
+                <td><site-return siteid="phasefinal.siteid"></site-return></td>
+                <td>{{ phasefinal.date | date:'dd/MM/yyyy'}}</td>
+                <td><owner-name buyerid = "phasefinal.buyerid"></owner-name></td>
+            </tr>
+        </tbody>
+    </table>

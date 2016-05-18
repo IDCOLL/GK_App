@@ -1,0 +1,11 @@
+<md-input-container style="min-width : 154px">  
+  <label>Area:</label>
+  <md-select ng-model="areaDropdown.pp" ng-change="areaDropdown.change()">
+    <md-option ng-repeat="area in areaDropdown.list" value = "{{area.description}}">{{area.description}}</md-option>
+  </md-select>
+</md-input-container> 
+<!--
+<md-option ng-options=""="option in buildingPhases.list">{{option.phase}}</md-option>
+
+ ng-change="buildingPhases.change()"
+-->

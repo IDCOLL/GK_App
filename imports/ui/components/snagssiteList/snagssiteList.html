@@ -1,0 +1,5 @@
+<md-card ng-repeat="snag in snagssiteList.snags">
+    <p class="md-body-2">{{snag.description}} -
+       Kontrakteer: <user-name userid = "snag.userId"></user-name></p>
+    <p class="md-body-2">Snag sperdatum/voltooings datum: {{snag.DueDate  | date:'MM/dd/yyyy'}}  {{snag.datecompleted  | date:'MM/dd/yyyy'}}</p>
+</md-card>

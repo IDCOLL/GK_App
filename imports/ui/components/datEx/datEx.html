@@ -1,0 +1,128 @@
+ 
+    <!--<input type="button" ng-click="tableExport.exportToExcel('table1')" value="Export to Excel">-->
+    <div layout="column" layout-gt-sm="row" layout-padding>  
+     <md-input-container class="newssetting">
+      <label>Vind Oord</label>
+      <input ng-model="datEx.searchareaText">
+    </md-input-container>      
+      <md-input-container  class="newsetting"  style="width:150px">
+      <label>Vind spesifieke erf:</label>
+      <input type="text" ng-model="datEx.searchText"/>
+      </md-input-container>
+     <md-input-container class="newssetting">
+      <label>Vind Plan adres</label>
+      <input ng-model="datEx.searchplanText">
+    </md-input-container>       
+      <md-input-container  class="newsetting"  style="width:150px">
+      <label>Vind status:</label>
+      <input type="text" ng-model="datEx.searchphaseText"/>
+      </md-input-container>
+      <md-button class="md-raised" ui-sref="reportsMain">Terug</md-button>  
+    
+    </div>
+       
+    <table id = "table23" summary="Code page support in different versions of MS Windows."
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <!--<colgroup span="2" align="center">
+        </colgroup>-->       
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup>                                         
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Nr</th>
+                <th>Erf nr</th>
+                <th>Tipe huis</th>
+                <th>Koper</th>
+                <th>LR/ET</th>
+                <th>Erf grootte</th>
+                <th>Huis grootte</th>
+                <th>Patio grootte</th>
+                <th>Slaapkamers grootte</th>
+                <th>Badkamers grootte</th>
+                <th>Studeerkamers grootte</th>
+                <th>Garages grootte</th>
+                <th>Bemark vol titel</th>
+                <th>Bemark lewensreg</th>
+                <th>Kontrakprys erf vol titel</th>
+                <th>Kontrakprys bou vol titel</th>
+                <th>Kontrakbedrag lewensreg</th>
+                <th>Ekstras prys</th>
+                <th>Addisionele Extra`s bedrag</th>
+                <th>Kontrakteer</th>
+                <th>Beoogde voltooing</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "site in datEx.sites">
+                <td>{{ site.layoutnr }}</td>
+                <td>{{ site.nr }}</td>
+                <td>{{ site.hometype }}</td>
+                <td>
+                    <owner-name buyerid="site.buyer"></owner-name>
+                </td>
+               <td>{{ datEx.LR(site.lifetime) }}</td>
+               <td>{{ site.sitesize }}</td>
+               <td>{{ site.homesize }}</td>
+               <td>{{ site.patiosize }}</td>
+               <td>{{ site.bedrooms }}</td>
+               <td>{{ site.bathrooms }}</td>
+               <td>{{ site.study }}</td>
+               <td>{{ site.garages }}</td>
+               <td>R{{ site.marketingfullprice | number:2}}</td>
+               <td>R{{ site.marketinglrprice | number:2}}</td>
+               <td>R{{ site.siteprice | number:2}}</td>
+               <td>R{{ site.houseprice | number:2}}</td>
+               <td>R{{ site.contractpricelr | number:2}}</td>
+               <td>R{{ site.extrasprice | number:2}}</td>
+               <td>R{{ site.addextrasprice | number:2}}</td>
+                <td>
+                    <user-name userid="site.contractor"></user-name>
+                </td>               
+               <td>{{ site.constructdate | date:'dd/MM/yyyy'}}</td>                   
+                <td ng-repeat = "items in site.phasearray">  
+                    <p class="listtext">{{items.status}} - {{items.datestamp | date:'dd/MM/yyyy'}}</p>
+               </td>
+            </tr>
+        </tbody>
+    </table>

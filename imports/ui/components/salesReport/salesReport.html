@@ -1,0 +1,102 @@
+ 
+    <md-button class="md-raised" ng-click="salesReport.exportToExcel('table1')">Export</md-button>
+    <div layout="column" layout-gt-sm="row" layout-padding>  
+     <md-input-container class="newssetting"  style="width:150px">
+      <label>Vind Oord</label>
+      <input ng-model="salesReport.searchareaText">
+    </md-input-container>        
+      <md-input-container  class="newsetting"  style="width:150px">
+      <label>Vind spesifieke erf:</label>
+      <input type="text" ng-model="salesReport.searchText"/>
+      </md-input-container>
+     <md-input-container class="newssetting"  style="width:150px">
+      <label>Vind Plan adres</label>
+      <input ng-model="salesReport.searchplanText">
+    </md-input-container>
+      <md-input-container  class="newsetting"  style="width:150px">
+      <label>Vind status:</label>
+      <input type="text" ng-model="salesReport.searchphaseText"/>
+      </md-input-container>
+      <md-button class="md-raised" ui-sref="reportsMain">Terug</md-button>  
+    </div>
+       
+    <table id = "table1" summary="Code page support in different versions of MS Windows."
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <!--<colgroup span="2" align="center">
+        </colgroup>-->       
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup>
+        <colgroup span="5" align="center">
+        </colgroup>                                        
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Nr</th>
+                <th>Erf nr</th>
+                <th>Tipe Huis</th>
+                <th>Koper</th>
+                <th>LR/ET</th>
+                <th>Verkoops status</th>
+                <th>Beoogde voltooing</th>
+                <th>Beoogde opmerkings</th>
+                <th>Konstruksie status</th>
+                <th>Laaste 5 status veranderinge</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "sites in salesReport.sitelist">
+                <td>{{ sites.layoutnr }}</td>
+                <td>{{ sites.nr }}</td>
+                <td>{{ sites.hometype }}</td>
+                <td>
+                    <owner-name buyerid="sites.buyer">" "</owner-name>
+                </td>
+                <td>{{ salesReport.LR(sites.lifetime) }}</td>
+               <!--<td>
+                    <phase-list siteid = "sites._id" specificstate = "Kapitaalbydrae betaal"></phase-list>
+               </td>-->
+                <td>
+                    {{sites.salesarray[sites.salesarray.length - 1].status}} - {{sites.salesarray[sites.salesarray.length - 1].datestamp | date:'dd/MM/yyyy'}}
+               </td>
+               <td>{{ sites.constructdate | date:'dd/MM/yyyy'}}</td>
+               <td>{{ sites.compcom}}</td>
+               <td>
+                    {{sites.constructarray[sites.constructarray.length - 1].status}} - {{sites.constructarray[sites.constructarray.length - 1].datestamp | date:'dd/MM/yyyy'}}
+               </td>                     
+                <td>  
+                    {{sites.phasearray[sites.phasearray.length - 1].status}} - {{sites.phasearray[sites.phasearray.length - 1].datestamp | date:'dd/MM/yyyy'}}
+               </td>
+               <td>  
+                    {{sites.phasearray[sites.phasearray.length - 2].status}} - {{sites.phasearray[sites.phasearray.length - 2].datestamp | date:'dd/MM/yyyy'}}
+               </td>
+                              <td>  
+                    {{sites.phasearray[sites.phasearray.length - 3].status}} - {{sites.phasearray[sites.phasearray.length - 3].datestamp | date:'dd/MM/yyyy'}}
+               </td>
+                              <td>  
+                    {{sites.phasearray[sites.phasearray.length - 4].status}} - {{sites.phasearray[sites.phasearray.length - 4].datestamp | date:'dd/MM/yyyy'}}
+               </td>
+                              <td>  
+                    {{sites.phasearray[sites.phasearray.length - 5].status}} - {{sites.phasearray[sites.phasearray.length - 5].datestamp | date:'dd/MM/yyyy'}}
+               </td>
+            </tr>
+        </tbody>
+    </table>

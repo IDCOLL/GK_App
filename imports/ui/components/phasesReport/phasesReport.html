@@ -1,0 +1,51 @@
+<div layout="column" layout-gt-sm="row">
+  <div flex>
+    <div layout="column" layout-gt-sm="row" layout-padding>  
+     <md-input-container class="newssetting">
+      <label>Vind Oord</label>
+      <input ng-model="phasesReport.searchareaText">
+    </md-input-container>           
+      <md-input-container  class="newsetting">
+      <label>Vind spesifieke erf:</label>
+      <input type="text" ng-model="phasesReport.searchText"/>
+      </md-input-container>
+     <md-input-container class="newssetting">
+      <label>Vind Plan adres</label>
+      <input ng-model="phasesReport.searchplanText">
+    </md-input-container> 
+      <md-input-container  class="newsetting">
+      <label>Vind status:</label>
+      <input type="text" ng-model="phasesReport.searchphaseText"/>
+      </md-input-container>
+        <md-button class="md-raised" ui-sref="reportsMain">Terug</md-button>
+    </div>
+   </div>
+</div>
+
+<table id = "phasesreport" summary="Table with all phases"
+        rules="groups" frame="hsides">
+        <colgroup align="center">
+        </colgroup>
+        <colgroup align="center">
+        </colgroup> 
+        <colgroup align="center">
+        </colgroup>                            
+        <thead valign="top">
+            <tr style = "font-size:10px">
+                <th>Erf</th>
+                <th>Plan nr</th>
+                <th>Koper</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody  valign="top"  style = "font-size:10px">
+            <tr ng-repeat = "site in phasesReport.sites">
+                <td>{{site.nr}}</td>
+                <td>{{site.layoutnr}}</td>
+                <td><owner-name buyerid = "site.buyer"></owner-name></td>
+                <td ng-repeat = "items in site.phasearray">
+                    <p class="listtext">{{items.status}} - {{items.datestamp | date:'dd/MM/yyyy'}}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>

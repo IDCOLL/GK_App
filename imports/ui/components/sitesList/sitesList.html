@@ -1,0 +1,69 @@
+<div flex ng-hide="sitesList.isLoggedIn">
+  <h2 class="md-display-1">Teken in vir toegang</h2>
+</div>
+<div flex ng-hide="sitesList.hasRole(sitesList.user.profile.role) || !sitesList.isLoggedIn">
+  <h2 class="md-display-1">Wag vir toegang vanaf sisteem administrateur</h2>
+</div>
+ 
+ <div flex layout="column" layout-gt-sm="row" ng-show="sitesList.isLoggedIn && sitesList.hasRole(sitesList.user.profile.role)">  
+ <div> 
+     <md-input-container class="newssetting"  style="width:100px">
+      <label style="font-size : 14px;">Vind Oord</label>
+      <input ng-model="sitesList.searchareaText">
+    </md-input-container>    
+    <md-input-container class="newssetting"  style="width:100px">
+      <label style="font-size : 14px;">Vind erf nommer</label>
+      <input ng-model="sitesList.searchText">
+    </md-input-container>  
+     <md-input-container class="newssetting"  style="width:100px">
+      <label style="font-size : 14px;">Vind Plan adres</label>
+      <input ng-model="sitesList.searchplanText">
+    </md-input-container>      
+     <md-input-container class="newssetting"  style="width:100px">
+      <label style="font-size : 14px;">Vind status</label>
+      <input ng-model="sitesList.searchphaseText">
+    </md-input-container>
+    <owners-dropdown on-Change = "sitesList.ownerchange(buyers)" property="buyers" pp=""></owners-dropdown>
+    <!--<sites-sort on-change="sitesList.sortChanged(sort)" property="nr" order="1"></sites-sort>-->
+    <md-menu ng-show="sitesList.isAdmin(sitesList.user.profile.role) || sitesList.isSales(sitesList.user.profile.role)">
+      <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open sample menu">
+    <md-icon md-svg-icon="action:ic_list_24px"></md-icon>
+      </md-button>
+    <md-menu-content>   
+      <md-menu-item ng-show="sitesList.isAdmin(sitesList.user.profile.role)"> 
+      <md-button ui-sref="siteAdd">Voeg Erf By</md-button>
+      </md-menu-item>
+      <md-menu-item ng-show="sitesList.isAdmin(sitesList.user.profile.role)">  
+      <md-button ui-sref="userList">Bestuur Gebruikers</md-button>
+      </md-menu-item>
+      <md-menu-item ng-show="sitesList.isAdmin(sitesList.user.profile.role)">  
+      <md-button ui-sref="ownersList">Bestuur Kopers</md-button>
+      </md-menu-item>
+      <md-menu-item>  
+      <md-button ui-sref="reportsMain">Verslae Skerm</md-button>
+      </md-menu-item>
+    </md-menu-content>
+    </md-menu> 
+    </div>
+ </div>
+ <div  class="ng-view" autoscroll="true" ng-show="sitesList.isLoggedIn && sitesList.hasRole(sitesList.user.profile.role)">
+ <md-list-item class="md-2-line" dir-paginate="site in sitesList.sites | itemsPerPage: sitesList.perPage" total-items="sitesList.sitesCount">             
+         <md-card flex layout="row">  
+          <span ui-sref="siteDetails({ siteId: site._id })"> 
+           <div class="md-list-item-text">
+                <h3>Erf: {{site.nr}} - Plan: {{site.layoutnr}}</h3>
+                <p>Status: {{site.phase}}
+                  <span ng-show="sitesList.isOption(site.phase)"> , Verval: {{site.optiondate  | date:'MM/dd/yyyy'}} - <user-name userid="site.useroption"></user-name></span>
+                  <span ng-show="sitesList.isConstruct(site.phase)"> - {{site.conprogress}}%</span>
+                </p>
+                <p ng-show="site.buyer">Koper - <owner-name buyerid = "site.buyer"></owner-name></p>
+                <p ng-show="site.lifetime && site.lifetime != undefined">Lewensreg</p>
+                <p ng-show="!site.lifetime  && site.lifetime != undefined">Eie titel</p>
+                <!--<p>Kontrak geteken: {{site.contractsigned}}</p>-->
+                <site-remove site="site" ng-show="sitesList.isAdmin(sitesList.user.profile.role)"></site-remove>
+           </div>
+           </span>
+         </md-card>
+    </md-list-item>
+    <dir-pagination-controls on-page-change="sitesList.pageChanged(newPageNumber)" max-size="5"></dir-pagination-controls>
+ </div>

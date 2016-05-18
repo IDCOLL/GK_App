@@ -1,0 +1,17 @@
+  <div flex>
+    <h2 class="md-title">Voeg snag by:</h2>
+ </div>
+ <div layout="column" layout-gt-sm="column" layout-padding>
+      <md-input-container>
+          <label>Snag besonderhede:</label>
+          <input type="text" ng-model="siteSnags.snag.description"/>
+      </md-input-container>
+      <div>
+        <user-dropdown on-Change = "siteSnags.contractorchange(users)" property="users" pp="1"></user-dropdown>   
+        <md-datepicker ng-model="siteSnags.snag.DueDate" md-placeholder="Voltooi Datum"></md-datepicker>
+      </div>
+    <div flex>
+      <md-button class="md-raised" ng-click="siteSnags.submit()">Stoor Nuwe Snag</md-button>
+    </div>
+</div>
+  
